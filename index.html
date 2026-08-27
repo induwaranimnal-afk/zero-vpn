@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>ZERO VPN — Secure Client Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -98,6 +98,265 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         input, textarea, button, select, a { -webkit-tap-highlight-color: transparent; }
+    
+        /* =========================================================
+           ZERO VPN — MOBILE / TABLET RESPONSIVE OVERRIDES
+           Keeps desktop design intact.
+           ========================================================= */
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        img, svg, canvas, video {
+            max-width: 100%;
+        }
+
+        button, input, textarea, select {
+            max-width: 100%;
+            font: inherit;
+        }
+
+        @media (max-width: 1023px) {
+            #dashboardView {
+                width: 100%;
+                min-width: 0;
+                overflow-x: hidden;
+            }
+
+            #dashboardView > .flex {
+                width: 100%;
+                min-width: 0;
+            }
+
+            #sidebar {
+                width: min(280px, 86vw);
+                max-width: 86vw;
+            }
+
+            #mobileOverlay {
+                width: 100vw;
+                height: 100vh;
+            }
+
+            main {
+                width: 100%;
+                min-width: 0;
+                overflow-x: hidden;
+            }
+
+            main > .p-4,
+            main > .lg\:p-8 {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            .glass {
+                max-width: 100%;
+            }
+
+            .grid {
+                min-width: 0;
+            }
+
+            textarea,
+            input {
+                min-width: 0 !important;
+            }
+
+            .overflow-x-auto {
+                max-width: 100%;
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+
+        @media (max-width: 640px) {
+            /* Login */
+            #loginView {
+                min-height: 100svh;
+                padding: 16px;
+            }
+
+            #loginView > .absolute.w-\[800px\] {
+                width: 150vw;
+                height: 55vh;
+            }
+
+            #loginView .max-w-md {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #loginView .glass {
+                padding: 24px 18px;
+                border-radius: 22px;
+            }
+
+            #loginView h1 {
+                font-size: 28px;
+            }
+
+            #loginView button {
+                min-height: 50px;
+            }
+
+            /* Unlinked screen */
+            #unlinkedView {
+                min-height: 100svh;
+                padding: 16px;
+            }
+
+            #unlinkedView .max-w-md {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #unlinkedView .glass {
+                padding: 24px 18px;
+                border-radius: 22px;
+            }
+
+            /* Mobile header */
+            #dashboardView > .lg\:hidden {
+                position: sticky;
+                top: 0;
+                width: 100%;
+                min-height: 60px;
+                padding: 12px 14px;
+                z-index: 50;
+            }
+
+            #dashboardView > .lg\:hidden span {
+                font-size: 17px;
+            }
+
+            /* Main page spacing */
+            main > .p-4,
+            main > .lg\:p-8 {
+                padding: 14px !important;
+            }
+
+            /* Dashboard grids collapse cleanly */
+            .grid-cols-1.md\:grid-cols-3,
+            .grid-cols-1.lg\:grid-cols-2 {
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+
+            /* Prevent cards from creating horizontal scroll */
+            .card-hover,
+            .glass {
+                min-width: 0;
+                overflow: hidden;
+            }
+
+            /* Headings */
+            #pageTitle {
+                font-size: 22px;
+                line-height: 1.25;
+            }
+
+            /* Usage gauge */
+            .relative.w-16.h-16 {
+                flex-shrink: 0;
+            }
+
+            /* Two-column info areas become one column */
+            .grid.grid-cols-2 {
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+
+            /* Subscription URL field */
+            #subUrl {
+                width: 100%;
+                min-width: 0;
+                font-size: 11px;
+                padding-right: 76px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Configuration text */
+            textarea {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            /* Config buttons/tabs */
+            .flex.gap-2 {
+                min-width: 0;
+            }
+
+            /* App cards */
+            .grid.grid-cols-1.md\:grid-cols-2 {
+                grid-template-columns: minmax(0, 1fr) !important;
+            }
+
+            /* Charts */
+            canvas {
+                max-width: 100% !important;
+            }
+
+            /* Toast */
+            #toast {
+                left: 12px !important;
+                right: 12px !important;
+                bottom: 14px !important;
+                width: auto !important;
+            }
+
+            #toast > div {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 380px) {
+            #dashboardView > .lg\:hidden {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            main > .p-4,
+            main > .lg\:p-8 {
+                padding: 10px !important;
+            }
+
+            #pageTitle {
+                font-size: 20px;
+            }
+
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+
+            .text-2xl {
+                font-size: 1.3rem;
+            }
+
+            #loginView .glass,
+            #unlinkedView .glass {
+                padding: 20px 14px;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 antialiased overflow-x-hidden">
